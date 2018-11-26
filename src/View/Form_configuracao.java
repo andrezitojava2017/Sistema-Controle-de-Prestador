@@ -9,23 +9,8 @@ import Controller.Dotacao_Controller;
 import Model.Dotacao_Model;
 import java.awt.Color;
 import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import static java.nio.file.StandardOpenOption.APPEND;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -35,7 +20,7 @@ import javax.swing.border.LineBorder;
  * @author rh
  */
 public class Form_configuracao extends javax.swing.JDialog {
-    
+
     private List<Dotacao_Model> listaCodLotacao = new ArrayList<>();
 
     /**
@@ -45,14 +30,16 @@ public class Form_configuracao extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         preencherComboListaItens();
-        
+
     }
-    
+
     /**
-     * Abre o formulario com o foco na Aba definida pelo indice fornecido no parametro
+     * Abre o formulario com o foco na Aba definida pelo indice fornecido no
+     * parametro
+     *
      * @param parent
      * @param modal
-     * @param indiceAba 
+     * @param indiceAba
      */
     public Form_configuracao(java.awt.Frame parent, boolean modal, int indiceAba) {
         super(parent, modal);
@@ -61,47 +48,6 @@ public class Form_configuracao extends javax.swing.JDialog {
         focoAbaCadastrarLotacao(indiceAba);
     }
     
-    
-    /**
-     * Metodo que localiza o local que sera disponibilizado o relatorio, para leitura do sistema
-     */
-    private void localizarRelatorio(){
-        JFileChooser selecionar = new JFileChooser();
-        int opt = selecionar.showOpenDialog(this);
-        if(opt == 0){
-            File arq = selecionar.getCurrentDirectory();
-            campo_local_relatorio.setText(arq.getPath());
-            btn_gerar_arq.setEnabled(true);
-        } else {
-            campo_local_relatorio.setText("Nenhum local foi selecionado");
-            btn_gerar_arq.setEnabled(false);
-        }
-        
-    }
-    
-    private void criarArquivoConf(){
-        try {
-            Path caminho = Paths.get("c:\\conf.conf");
-            Files.createFile(caminho);
-            System.out.println(caminho);
-        } catch (IOException ex) {
-            Logger.getLogger(Form_configuracao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    /**
-     * Metodo para ler o arquivo que contem o endereço local dos relatorios
-     * que será utilizados neste sistema
-     */
-    private void lerArquivoConfRelatorio(){
-        try {
-            Path caminho = Paths.get("c:\\conf.conf");
-            List<String> linhas = Files.readAllLines(caminho);
-        } catch (IOException ex) {
-            Logger.getLogger(Form_configuracao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     /**
      * Abre este formulario com a aba Cadastrar Lotação aberta
      */
@@ -140,12 +86,6 @@ public class Form_configuracao extends javax.swing.JDialog {
         campo_descricao = new javax.swing.JTextField();
         btn_salvar = new javax.swing.JButton();
         btn_sair = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        campo_local_relatorio = new javax.swing.JTextField();
-        btn_selecionar = new javax.swing.JButton();
-        btn_gerar_arq = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Configuração");
@@ -368,80 +308,6 @@ public class Form_configuracao extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Cadastrar lotação", jPanel3);
 
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel5.setText("Definir caminho:");
-
-        campo_local_relatorio.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
-
-        btn_selecionar.setFont(new java.awt.Font("Gulim", 1, 12)); // NOI18N
-        btn_selecionar.setForeground(new java.awt.Color(255, 102, 0));
-        btn_selecionar.setText("Selecionar");
-        btn_selecionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_selecionarActionPerformed(evt);
-            }
-        });
-
-        btn_gerar_arq.setFont(new java.awt.Font("Gulim", 1, 14)); // NOI18N
-        btn_gerar_arq.setForeground(new java.awt.Color(255, 102, 0));
-        btn_gerar_arq.setText("GERAR ARQUIVO .CONF");
-        btn_gerar_arq.setEnabled(false);
-        btn_gerar_arq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_gerar_arqActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(campo_local_relatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_selecionar))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(btn_gerar_arq)))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campo_local_relatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_selecionar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btn_gerar_arq, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Relatórios", jPanel5);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -457,6 +323,72 @@ public class Form_configuracao extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_sairActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        // verifica componentes
+        Component comp[] = jPanel4.getComponents();
+        int retorno = verificarCamposPreenchidos(comp);
+
+        if (retorno == 0) {
+            Dotacao_Model lotacao = new Dotacao_Model();
+            lotacao.setCodigo(Integer.parseInt(campo_cod_lotacao.getText()));
+            lotacao.setDescricao(campo_descricao.getText());
+
+            Dotacao_Controller control = new Dotacao_Controller();
+            control.gravar_novo_dotacao(lotacao);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        limparCamposAtualizados();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // verifica campos preenchidos
+        Component campos[] = jPanel2.getComponents();
+        int retorno = verificarCamposPreenchidos(campos);
+
+        if (retorno != 0) {
+            JOptionPane.showMessageDialog(this, "Atenção preencha todos os campos", "Atenção", JOptionPane.QUESTION_MESSAGE);
+        } else {
+            Dotacao_Model atualizaLotacao = new Dotacao_Model();
+            atualizaLotacao.setCodigo(Integer.parseInt(campo_novo_cod_lotacao.getText()));
+            atualizaLotacao.setDescricao(campo_novo_desc_lotacao.getText());
+
+            // passando objeto para ataulizar na bse de dados
+            Dotacao_Controller control = new Dotacao_Controller();
+            retorno = control.atualizarDadosLotacao(atualizaLotacao);
+
+            if (retorno == 0) {
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                // preenche novamente a lista do combobox, com as informações atualizadas
+                removerItensCombo();
+
+                // Limpando os campos
+                limparCamposAtualizados();
+
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void combo_cod_lotacaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_cod_lotacaoItemStateChanged
+        // item selecionado para preencher campo descrição
+        if (combo_cod_lotacao.getItemCount() > 0) {
+
+            int itemSelecionado = combo_cod_lotacao.getSelectedIndex();
+            Dotacao_Model lotacaoSelec = this.listaCodLotacao.get(itemSelecionado);
+            campo_desc_lotacao.setText(lotacaoSelec.getDescricao());
+        }
+    }//GEN-LAST:event_combo_cod_lotacaoItemStateChanged
+
     /**
      * Verificar se todos os campos estão preenchidos
      *
@@ -465,7 +397,7 @@ public class Form_configuracao extends javax.swing.JDialog {
      */
     private int verificarCamposPreenchidos(Component campos[]) {
         int cont = 0;
-        
+
         for (int i = 0; i < campos.length; i++) {
             Component comp = campos[i];
             if (comp instanceof JTextField) {
@@ -479,95 +411,17 @@ public class Form_configuracao extends javax.swing.JDialog {
         return cont;
     }
 
-    private void combo_cod_lotacaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_cod_lotacaoItemStateChanged
-        // item selecionado para preencher campo descrição
-        if (combo_cod_lotacao.getItemCount() > 0) {
-            
-            int itemSelecionado = combo_cod_lotacao.getSelectedIndex();
-            Dotacao_Model lotacaoSelec = this.listaCodLotacao.get(itemSelecionado);
-            campo_desc_lotacao.setText(lotacaoSelec.getDescricao());
-        }
-    }//GEN-LAST:event_combo_cod_lotacaoItemStateChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // verifica campos preenchidos
-        Component campos[] = jPanel2.getComponents();
-        int retorno = verificarCamposPreenchidos(campos);
-        
-        if (retorno != 0) {
-            JOptionPane.showMessageDialog(this, "Atenção preencha todos os campos", "Atenção", JOptionPane.QUESTION_MESSAGE);
-        } else {
-            Dotacao_Model atualizaLotacao = new Dotacao_Model();
-            atualizaLotacao.setCodigo(Integer.parseInt(campo_novo_cod_lotacao.getText()));
-            atualizaLotacao.setDescricao(campo_novo_desc_lotacao.getText());
-
-            // passando objeto para ataulizar na bse de dados
-            Dotacao_Controller control = new Dotacao_Controller();
-            retorno = control.atualizarDadosLotacao(atualizaLotacao);
-            
-            if (retorno == 0) {
-                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
-                // preenche novamente a lista do combobox, com as informações atualizadas
-                removerItensCombo();
-
-                // Limpando os campos
-                limparCamposAtualizados();
-                
-            }
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        // verifica componentes
-        Component comp[] = jPanel4.getComponents();
-        int retorno = verificarCamposPreenchidos(comp);
-        
-        if (retorno == 0) {
-            Dotacao_Model lotacao = new Dotacao_Model();
-            lotacao.setCodigo(Integer.parseInt(campo_cod_lotacao.getText()));
-            lotacao.setDescricao(campo_descricao.getText());
-            
-            Dotacao_Controller control = new Dotacao_Controller();
-            control.gravar_novo_dotacao(lotacao);
-            
-        } else {
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_salvarActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        limparCamposAtualizados();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_btn_sairActionPerformed
-
-    private void btn_selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selecionarActionPerformed
-        // TODO add your handling code here:
-        localizarRelatorio();
-    }//GEN-LAST:event_btn_selecionarActionPerformed
-
-    private void btn_gerar_arqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gerar_arqActionPerformed
-        // TODO add your handling code here:
-//        criarArquivoConf();
-        Path art = Paths.get("c:\\conf.conf");
-    }//GEN-LAST:event_btn_gerar_arqActionPerformed
-
     /**
      * Preenche comboBox com a lista de coodigos cadastrados na base de dados
      */
     private void preencherComboListaItens() {
-        
+
         Dotacao_Controller control = new Dotacao_Controller();
         this.listaCodLotacao = control.carregarListaLotacoes();
-        
+
         for (Dotacao_Model lotacao1 : listaCodLotacao) {
             combo_cod_lotacao.addItem(lotacao1.getCodigo());
-            
+
         }
     }
 
@@ -630,14 +484,11 @@ public class Form_configuracao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_gerar_arq;
     private javax.swing.JButton btn_sair;
     private javax.swing.JButton btn_salvar;
-    private javax.swing.JButton btn_selecionar;
     private javax.swing.JTextField campo_cod_lotacao;
     private javax.swing.JTextField campo_desc_lotacao;
     private javax.swing.JTextField campo_descricao;
-    private javax.swing.JTextField campo_local_relatorio;
     private javax.swing.JTextField campo_novo_cod_lotacao;
     private javax.swing.JTextField campo_novo_desc_lotacao;
     private javax.swing.JComboBox combo_cod_lotacao;
@@ -647,15 +498,12 @@ public class Form_configuracao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
