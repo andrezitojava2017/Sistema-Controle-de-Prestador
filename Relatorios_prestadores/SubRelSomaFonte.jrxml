@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2018-01-22T17:37:16 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77015a39-31ed-4086-b5c0-db0dc1b32321">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="prestadores"/>
+	<parameter name="competencia" class="java.lang.String"/>
+	<parameter name="codLotacao" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT prefeitura.tbl_servicos.fonte,
+	prefeitura.tbl_lotacao.descricao,
+	sum( prefeitura.tbl_servicos.inss_retido),
+	sum( prefeitura.tbl_servicos.inss_patronal),
+	sum( prefeitura.tbl_servicos.inss_retido + prefeitura.tbl_servicos.inss_patronal)
+FROM prefeitura.tbl_servicos
+	inner join prefeitura.tbl_lotacao ON 
+	 prefeitura.tbl_lotacao.codigo_dotacao = prefeitura.tbl_servicos.cod_dotacao 
+WHERE 
+	 prefeitura.tbl_servicos.competencia = $P{competencia}
+OR prefeitura.tbl_servicos.cod_dotacao = $P{codLotacao}
+GROUP BY prefeitura.tbl_servicos.fonte]]>
+	</queryString>
+	<field name="fonte" class="java.lang.Integer"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="sum( prefeitura.tbl_servicos.inss_retido)" class="java.math.BigDecimal"/>
+	<field name="sum( prefeitura.tbl_servicos.inss_patronal)" class="java.math.BigDecimal"/>
+	<field name="sum( prefeitura.tbl_servicos.inss_retido + prefeitura.tbl_servicos.inss_patronal)" class="java.math.BigDecimal"/>
+	<variable name="somaRetido" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum( prefeitura.tbl_servicos.inss_retido)}]]></variableExpression>
+	</variable>
+	<variable name="somaPatronal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum( prefeitura.tbl_servicos.inss_patronal)}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="20" uuid="6835fac4-203e-4b24-8ebc-47b5b8b3a7c9"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fonte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="190" height="20" uuid="fb434397-8e11-4dcd-803c-e7382229c77f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secretaria Dept.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="100" height="20" uuid="d5fa82f9-58cd-495b-af5a-ba0125c30f49"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSS retido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="20" uuid="065ca1c1-8ca1-4954-b525-a6b0eb92ca55"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSS patronal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="60" height="18" uuid="f2d858d1-e422-43d0-ace9-818837c01713"/>
+				<textFieldExpression><![CDATA[$F{fonte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="2" width="190" height="18" uuid="a4cf373c-c2c0-4068-ac58-4287230c8625">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="250" y="2" width="100" height="18" uuid="f5a4482a-1326-4295-91c7-bd458939c1f6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sum( prefeitura.tbl_servicos.inss_retido)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="350" y="2" width="100" height="18" uuid="7785c28d-ba7e-42ba-af47-fbc49dece0bb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sum( prefeitura.tbl_servicos.inss_patronal)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="13" width="120" height="20" uuid="0ae26621-f836-4502-a954-6b13f1301a95"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total INSS retido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="33" width="120" height="20" uuid="c8a6cd4c-3c12-47c0-9d2b-f59ed2ff820e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total INSS patronal]]></text>
+			</staticText>
+			<textField pattern="#,##0.00#;#,##0.00#-">
+				<reportElement x="350" y="13" width="100" height="20" uuid="934d6ea1-69fb-4971-8cc9-dd94d28d7ad3"/>
+				<textFieldExpression><![CDATA[$V{somaRetido}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;#,##0.00#-">
+				<reportElement x="350" y="33" width="100" height="20" uuid="c295397e-1c81-494c-8538-2b00a916d4bb"/>
+				<textFieldExpression><![CDATA[$V{somaPatronal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
