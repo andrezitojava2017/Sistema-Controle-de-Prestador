@@ -30,6 +30,19 @@ public class Pessoas_Controller {
         return retorno = salvarPrest.gravarPrestador(prestador);
     }
 
+    
+    /**
+     * Metodo para salar cadastro de um novo prestador de serviços, caso não
+     * tenha no arquivo .RE
+     * @param prestador
+     * @return 
+     */
+    public boolean gravar_Novo_Prestador(Pessoas_Model prestador) {
+        boolean retorno;
+        Pessoas_Model salvarPrest = new Pessoas_Model();
+        return retorno = salvarPrest.gravarNovoPrestador(prestador);
+    }
+
     /**
      * Metodo utilizdo para capturar informações de um determinado prestador
      *
@@ -56,7 +69,7 @@ public class Pessoas_Controller {
     public void buscarPisPasepBaseDados(List<String> pisPasep, String caminhoArquivo) {
 
         Pessoas_Model model = new Pessoas_Model();
-        
+
         // verificamos se há o pis/pasep cadastrado na base de dados, retornando uma lista
         // contendo os CADASTRADOS e NÃO CADASTRADOS
         List<Object> listaPrestador = model.buscarPisPasepBaseDados(pisPasep);
@@ -77,15 +90,15 @@ public class Pessoas_Controller {
 
         if (NaoCadastrado.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum prestador localizado na lista de NÃO CADASTRADOS", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
-            
+
             // recuperar a lista dos prestadores que ESTÃO CADASTRADOS e passa para a view que ira
             // capturar os valores de cada prestador
             List<Pessoas_Model> cadastrados = (List<Pessoas_Model>) listaPrestador.get(0);
             Form_Lanc_Servicos control = new Form_Lanc_Servicos(null, true, cadastrados);
             control.setVisible(true);
-            
+
         } else {
-            
+
             // Enviando para a tela que exibira os prestadores que NÃO ESTÃO CADASTRADOS NA BASE
             Form_Lancar_Prest exibir = new Form_Lancar_Prest(null, true, NaoCadastrado, caminhoArquivo);
             exibir.setVisible(true);

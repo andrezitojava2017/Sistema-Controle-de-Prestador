@@ -45,6 +45,7 @@ public class Form_consulta extends javax.swing.JFrame {
         tabelaResultado = new javax.swing.JTable();
         btn_alterar_lancamento = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btn_inserir_novo_prestador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta");
@@ -160,6 +161,13 @@ public class Form_consulta extends javax.swing.JFrame {
             }
         });
 
+        btn_inserir_novo_prestador.setText("INSERIR");
+        btn_inserir_novo_prestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inserir_novo_prestadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,6 +182,8 @@ public class Form_consulta extends javax.swing.JFrame {
                         .addComponent(btn_alterar_lancamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_inserir_novo_prestador)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -181,10 +191,12 @@ public class Form_consulta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_alterar_lancamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_alterar_lancamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_inserir_novo_prestador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -263,6 +275,12 @@ public class Form_consulta extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btn_inserir_novo_prestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserir_novo_prestadorActionPerformed
+        // chamaa a view para inserir um novo prestador de serviços a base dedados
+        Form_Inserir_novo_prestador prestador = new Form_Inserir_novo_prestador(this, true);
+        prestador.setVisible(true);
+    }//GEN-LAST:event_btn_inserir_novo_prestadorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +319,7 @@ public class Form_consulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alterar_lancamento;
+    private javax.swing.JButton btn_inserir_novo_prestador;
     private javax.swing.JButton btn_selecionar;
     private javax.swing.JFormattedTextField campo_competencia;
     private javax.swing.JButton jButton1;

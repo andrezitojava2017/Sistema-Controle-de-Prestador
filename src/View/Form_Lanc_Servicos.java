@@ -39,6 +39,8 @@ public class Form_Lanc_Servicos extends javax.swing.JDialog {
 
     /**
      * Creates new form Form_Lanc_Servicos
+     * @param parent
+     * @param modal
      */
     public Form_Lanc_Servicos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -50,6 +52,10 @@ public class Form_Lanc_Servicos extends javax.swing.JDialog {
      * Construtor que inicializa os campos com dados de um prestador utilizado
      * para fazer alteração de lancamentos á inseridos na base de dados. chamado
      * pela tela de consulta
+     * @param parent
+     * @param modal
+     * @param competencia
+     * @param id_lancamento
      */
     public Form_Lanc_Servicos(java.awt.Frame parent, boolean modal, String competencia, int id_lancamento) {
         super(parent, modal);
@@ -710,7 +716,7 @@ public class Form_Lanc_Servicos extends javax.swing.JDialog {
         // que será utilizada, tanto para salvar novo registro, como para Atualizar um registro
         List<Object> dados = salvarAtualizarDados();
 
-        if (dados.size() != 0) {
+        if (!dados.isEmpty()) {
 
             // CONFIRMAÇÃO DE INCLUSÃO
             int ret = JOptionPane.showConfirmDialog(this, "Confirma a inclusão deste serviço?", "Confirmação", JOptionPane.YES_NO_OPTION);

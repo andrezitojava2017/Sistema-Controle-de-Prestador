@@ -99,6 +99,7 @@ public class Pessoas_Model {
     /**
      * Faz a inserção dos prestadores na base de dados
      * @param prestador List<>
+     * @return 
      */
     public boolean gravarPrestador(List<Pessoas_Model> prestador) {
 
@@ -128,5 +129,18 @@ public class Pessoas_Model {
             }
         }
         return retorno;
+    }
+    
+    /**
+     * Faz a inserção do novo prestador na base de dados,
+     * tbl_pessoas
+     * @param prestador
+     * @return boolean retorno  - indica se foi inserido com sucesso
+     */
+    public boolean gravarNovoPrestador(Pessoas_Model prestador){
+        Pessoas_Dao dao = new Pessoas_Dao();
+        boolean retorno = dao.Gravar_Novo_Pesso(prestador);
+        
+        return retorno;        
     }
 }
