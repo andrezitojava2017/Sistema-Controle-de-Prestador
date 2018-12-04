@@ -126,6 +126,7 @@ public class Form_Inserir_novo_prestador extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_inserir_prestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserir_prestadorActionPerformed

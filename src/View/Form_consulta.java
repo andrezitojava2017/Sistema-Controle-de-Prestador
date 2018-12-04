@@ -140,6 +140,7 @@ public class Form_consulta extends javax.swing.JFrame {
             tabelaResultado.getColumnModel().getColumn(6).setMaxWidth(200);
         }
 
+        btn_alterar_lancamento.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         btn_alterar_lancamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ico_alterar.png"))); // NOI18N
         btn_alterar_lancamento.setText("Alterar");
         btn_alterar_lancamento.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -151,6 +152,7 @@ public class Form_consulta extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ico_deletar.png"))); // NOI18N
         jButton1.setText("Deletar");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -161,7 +163,12 @@ public class Form_consulta extends javax.swing.JFrame {
             }
         });
 
-        btn_inserir_novo_prestador.setText("INSERIR");
+        btn_inserir_novo_prestador.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        btn_inserir_novo_prestador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ico_add_user.png"))); // NOI18N
+        btn_inserir_novo_prestador.setText("Inserir");
+        btn_inserir_novo_prestador.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        btn_inserir_novo_prestador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_inserir_novo_prestador.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_inserir_novo_prestador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_inserir_novo_prestadorActionPerformed(evt);
@@ -191,12 +198,11 @@ public class Form_consulta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_alterar_lancamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btn_inserir_novo_prestador))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_alterar_lancamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_inserir_novo_prestador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
