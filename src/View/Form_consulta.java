@@ -46,6 +46,7 @@ public class Form_consulta extends javax.swing.JFrame {
         btn_alterar_lancamento = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btn_inserir_novo_prestador = new javax.swing.JButton();
+        btn_lancar_servico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta");
@@ -175,6 +176,17 @@ public class Form_consulta extends javax.swing.JFrame {
             }
         });
 
+        btn_lancar_servico.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        btn_lancar_servico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ico_lanc_novo_servico.png"))); // NOI18N
+        btn_lancar_servico.setText("Lançar Serviço");
+        btn_lancar_servico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_lancar_servico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_lancar_servico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lancar_servicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,6 +203,8 @@ public class Form_consulta extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_inserir_novo_prestador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_lancar_servico)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -202,7 +216,8 @@ public class Form_consulta extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_alterar_lancamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_inserir_novo_prestador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_inserir_novo_prestador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_lancar_servico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -287,6 +302,12 @@ public class Form_consulta extends javax.swing.JFrame {
         prestador.setVisible(true);
     }//GEN-LAST:event_btn_inserir_novo_prestadorActionPerformed
 
+    private void btn_lancar_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lancar_servicoActionPerformed
+        // chama o formulario para lançar novo serviços de um prestdor
+        Form_Lanc_Novo_Servico servico = new Form_Lanc_Novo_Servico(this, true);
+        servico.setVisible(true);
+    }//GEN-LAST:event_btn_lancar_servicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +347,7 @@ public class Form_consulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alterar_lancamento;
     private javax.swing.JButton btn_inserir_novo_prestador;
+    private javax.swing.JButton btn_lancar_servico;
     private javax.swing.JButton btn_selecionar;
     private javax.swing.JFormattedTextField campo_competencia;
     private javax.swing.JButton jButton1;

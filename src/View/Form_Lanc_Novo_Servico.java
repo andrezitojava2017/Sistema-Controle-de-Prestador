@@ -76,8 +76,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.PrestadorCadastrados = prestador;
-        tabelaPrestadores.setModel(tabela);
-        preencherTabelaPrestadores();
         competencia();
     }
 
@@ -259,13 +257,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         campoCompetencia.setText(formatar.format(data));
     }
 
-    /**
-     * Faz o preenchiimento da tabela com as informações dos prestadores
-     */
-    private void preencherTabelaPrestadores() {
-        Tabela_Prestadores_Control control = new Tabela_Prestadores_Control();
-        control.preencherTabelaPrestadores(PrestadorCadastrados, tabela);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -304,9 +295,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         lbl_inss_patronal = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lbl_soma_retencao = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaPrestadores = new javax.swing.JTable();
         btnSalvarRegistro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_cad_nova_lotacao = new javax.swing.JButton();
@@ -577,39 +565,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de prestadores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gulim", 1, 12), new java.awt.Color(0, 153, 153))); // NOI18N
-
-        tabelaPrestadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2"
-            }
-        ));
-        tabelaPrestadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaPrestadoresMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabelaPrestadores);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         btnSalvarRegistro.setFont(new java.awt.Font("Gulim", 1, 14)); // NOI18N
         btnSalvarRegistro.setForeground(new java.awt.Color(255, 102, 0));
         btnSalvarRegistro.setText("Salvar lançamento");
@@ -652,9 +607,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSalvarRegistro)
@@ -674,41 +627,24 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSalvarRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_cad_nova_lotacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_salvar_alteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSalvarRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_cad_nova_lotacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_salvar_alteracao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tabelaPrestadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaPrestadoresMouseClicked
-        // capturar informação de um prestador da lista de prestadores
-        // Logo apos preenchemos os respectivos campos
-        int linha = tabelaPrestadores.getSelectedRow();
-        numLinhaRemover = linha;
-        String nomePrestador = String.valueOf(tabela.getValueAt(linha, 0));
-        String pisPasep = String.valueOf(tabela.getValueAt(linha, 1));
-
-        campoNomePrestador.setText(nomePrestador);
-        campoPisPasepPrestador.setText(pisPasep);
-
-//        System.out.println("linha selecionada: " + numLinhaRemover);
-    }//GEN-LAST:event_tabelaPrestadoresMouseClicked
 
     private void btnSalvarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarRegistroActionPerformed
         // O metodo salvarAtualizarDados() chama outro metodo que ira verificar se todos os campos foram preenchidos
@@ -739,8 +675,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                 if (idRetorno != 0) {
                     JOptionPane.showMessageDialog(this, "Prestação de serviços salvo com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
 
-                    // remove o prestador da tabela, pois o mesmo ja foi inserido na base
-                    removerLinhaPrestador();
                 }
 
             }
@@ -789,28 +723,28 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
 
     private void campoNomePrestadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNomePrestadorKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == evt.VK_ENTER || evt.getKeyCode() == evt.VK_TAB) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER || evt.getKeyCode() == KeyEvent.VK_TAB) {
             campoPisPasepPrestador.requestFocus();
         }
     }//GEN-LAST:event_campoNomePrestadorKeyPressed
 
     private void campoPisPasepPrestadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPisPasepPrestadorKeyPressed
         // TODO add your handling code here:    
-        if (evt.getKeyCode() == evt.VK_ENTER || evt.getKeyCode() == evt.VK_TAB) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER || evt.getKeyCode() == KeyEvent.VK_TAB) {
             campoEmpenho.requestFocus();
         }
     }//GEN-LAST:event_campoPisPasepPrestadorKeyPressed
 
     private void campoEmpenhoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoEmpenhoKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == evt.VK_ENTER || evt.getKeyCode() == evt.VK_TAB) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER || evt.getKeyCode() == KeyEvent.VK_TAB) {
             campoFonteEmpenho.requestFocus();
         }
     }//GEN-LAST:event_campoEmpenhoKeyPressed
 
     private void campoFonteEmpenhoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoFonteEmpenhoKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == evt.VK_ENTER || evt.getKeyCode() == evt.VK_TAB) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER || evt.getKeyCode() == KeyEvent.VK_TAB) {
             btnBuscarLotacao.requestFocus();
         }
     }//GEN-LAST:event_campoFonteEmpenhoKeyPressed
@@ -943,12 +877,9 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_custo_servicos;
     private javax.swing.JLabel lbl_inss_patronal;
     private javax.swing.JLabel lbl_inss_retido;
     private javax.swing.JLabel lbl_soma_retencao;
-    private javax.swing.JTable tabelaPrestadores;
     // End of variables declaration//GEN-END:variables
 }

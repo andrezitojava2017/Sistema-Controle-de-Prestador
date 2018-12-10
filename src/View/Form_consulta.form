@@ -51,6 +51,8 @@
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btn_inserir_novo_prestador" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_lancar_servico" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -67,6 +69,7 @@
                       <Component id="btn_alterar_lancamento" max="32767" attributes="0"/>
                       <Component id="jButton1" max="32767" attributes="0"/>
                       <Component id="btn_inserir_novo_prestador" max="32767" attributes="0"/>
+                      <Component id="btn_lancar_servico" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="320" max="-2" attributes="0"/>
@@ -259,6 +262,22 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_inserir_novo_prestadorActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_lancar_servico">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Eras Demi ITC" size="12" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagens/ico_lanc_novo_servico.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Lan&#xe7;ar Servi&#xe7;o"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_lancar_servicoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
