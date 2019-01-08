@@ -21,7 +21,7 @@ public class Pessoas_Controller {
     /**
      * Metodo para salvar cadastro de um novo prestador de serviço
      *
-     * @param pessoa
+     * @param prestador
      * @return
      */
     public boolean gravar_Novo_Prestador(List<Pessoas_Model> prestador) {
