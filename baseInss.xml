@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<base>
+	<anos ano="2018">
+		<janeiro>
+			<patronal>20.0</patronal>
+			<maximoDesconto>621.03</maximoDesconto>
+		</janeiro>
+	</anos>
+	<anos ano="2019">
+		<janeiro>
+			<patronal>20.0</patronal>
+			<maximoDesconto>642.33</maximoDesconto>
+		</janeiro>
+	</anos>
+</base>
