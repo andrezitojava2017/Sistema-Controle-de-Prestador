@@ -5,11 +5,19 @@
 			<patronal>20.0</patronal>
 			<maximoDesconto>621.03</maximoDesconto>
 		</janeiro>
+		<fevereiro>
+			<patronal>20.0</patronal>
+			<maximoDesconto>622.0</maximoDesconto>
+		</fevereiro>
 	</anos>
 	<anos ano="2019">
 		<janeiro>
 			<patronal>20.0</patronal>
 			<maximoDesconto>642.33</maximoDesconto>
 		</janeiro>
+		<fevereiro>
+			<patronal>20.0</patronal>
+			<maximoDesconto>645.0</maximoDesconto>
+		</fevereiro>
 	</anos>
 </base>
