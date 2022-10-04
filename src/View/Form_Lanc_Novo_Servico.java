@@ -271,9 +271,9 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campoCompetencia = new javax.swing.JTextField();
         campoNomePrestador = new javax.swing.JTextField();
         campoPisPasepPrestador = new javax.swing.JTextField();
+        campoCompetencia = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -303,7 +303,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lançamento de serviços empenhados");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Prestador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(0, 153, 153))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Prestador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
@@ -316,9 +316,6 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 255));
         jLabel3.setText("PIS/PASEP:");
-
-        campoCompetencia.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        campoCompetencia.setForeground(new java.awt.Color(0, 102, 102));
 
         campoNomePrestador.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         campoNomePrestador.setForeground(new java.awt.Color(0, 102, 102));
@@ -336,6 +333,12 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
             }
         });
 
+        try {
+            campoCompetencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -351,7 +354,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                     .addComponent(campoPisPasepPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoNomePrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,7 +374,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Prestador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(0, 153, 153))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Prestador", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 255));
@@ -489,7 +492,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resumo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(0, 153, 153))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resumo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 153, 153))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 255));
@@ -854,7 +857,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
     private javax.swing.JButton btn_cad_nova_lotacao;
     private javax.swing.JButton btn_salvar_alteracao;
     private javax.swing.JTextField campoCodLotacao;
-    private javax.swing.JTextField campoCompetencia;
+    private javax.swing.JFormattedTextField campoCompetencia;
     private javax.swing.JTextField campoDescricaoLotacao;
     private javax.swing.JTextField campoEmpenho;
     private javax.swing.JTextField campoFonteEmpenho;

@@ -11,7 +11,7 @@ package Model;
  */
 public enum AliquotaInss {
 
-    ALIQUOTA_1(0.08), ALIQUOTA_2(0.09), ALIQUOTA_3(0.11), PATRONAL(0.20), LIMITE_DESCONTO(621.03);
+   ALIQUOTA_3(0.11), PATRONAL(0.20);
 
     private final double valor;
 

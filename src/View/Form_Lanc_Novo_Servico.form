@@ -96,9 +96,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="campoPisPasepPrestador" min="-2" pref="158" max="-2" attributes="0"/>
                       <Component id="campoNomePrestador" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
-                      <Component id="campoCompetencia" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="campoCompetencia" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="83" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -159,16 +159,6 @@
             <Property name="text" type="java.lang.String" value="PIS/PASEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campoCompetencia">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="DejaVu Sans" size="12" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="campoNomePrestador">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -194,6 +184,13 @@
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoPisPasepPrestadorKeyPressed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="campoCompetencia">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##/####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
