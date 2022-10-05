@@ -5,17 +5,26 @@
  */
 package View;
 
+import Controller.Pessoas_Controller;
+import Model.Pessoas_Model;
+import Model.TableBuscarPrestadorAbstract;
+import java.util.List;
+
 /**
  *
  * @author andre
  */
-public class Form_consultar_prestador extends javax.swing.JFrame {
+public class Form_consultar_prestador extends javax.swing.JDialog {
+
+    TableBuscarPrestadorAbstract tableBuscaPrestador = new TableBuscarPrestadorAbstract();
 
     /**
      * Creates new form Form_consultar_prestador
      */
-    public Form_consultar_prestador() {
+    public Form_consultar_prestador(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        tableBusca.setModel(tableBuscaPrestador);
     }
 
     /**
@@ -34,13 +43,30 @@ public class Form_consultar_prestador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableBusca = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Buscar");
 
-        campoBuscarPrestador.setText("jTextField1");
+        campoBuscarPrestador.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                Buscar(evt);
+            }
+        });
+        campoBuscarPrestador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BuscarMethod(evt);
+            }
+        });
 
         jLabel1.setText("Buscar por:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,7 +135,31 @@ public class Form_consultar_prestador extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+
+        Pessoas_Controller consultar = new Pessoas_Controller();
+        List<Pessoas_Model> result = consultar.ConsultarPrestador(campoBuscarPrestador.getText());
+        consultar.PreencherTabelaConsulta(result, tableBuscaPrestador);
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void Buscar(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Buscar
+        // TODO add your handling code here:
+        Pessoas_Controller consultar = new Pessoas_Controller();
+        List<Pessoas_Model> result = consultar.ConsultarPrestador(campoBuscarPrestador.getText());
+        consultar.PreencherTabelaConsulta(result, tableBuscaPrestador);
+    }//GEN-LAST:event_Buscar
+
+    private void BuscarMethod(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarMethod
+        // TODO add your handling code here:
+        Pessoas_Controller consultar = new Pessoas_Controller();
+        List<Pessoas_Model> result = consultar.ConsultarPrestador(campoBuscarPrestador.getText());
+        consultar.PreencherTabelaConsulta(result, tableBuscaPrestador);
+    }//GEN-LAST:event_BuscarMethod
 
     /**
      * @param args the command line arguments
@@ -138,10 +188,17 @@ public class Form_consultar_prestador extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_consultar_prestador().setVisible(true);
+                Form_consultar_prestador dialog = new Form_consultar_prestador(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

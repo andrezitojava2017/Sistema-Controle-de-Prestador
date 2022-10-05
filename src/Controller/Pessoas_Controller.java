@@ -7,6 +7,7 @@ package Controller;
 
 import DAO.Pessoas_Dao;
 import Model.Pessoas_Model;
+import Model.TableBuscarPrestadorAbstract;
 import View.Form_Lanc_Servicos;
 import View.Form_Lancar_Prest;
 import java.util.List;
@@ -30,12 +31,12 @@ public class Pessoas_Controller {
         return retorno = salvarPrest.gravarPrestador(prestador);
     }
 
-    
     /**
      * Metodo para salar cadastro de um novo prestador de serviços, caso não
      * tenha no arquivo .RE
+     *
      * @param prestador
-     * @return 
+     * @return
      */
     public boolean gravar_Novo_Prestador(Pessoas_Model prestador) {
         boolean retorno;
@@ -49,16 +50,22 @@ public class Pessoas_Controller {
      * @param codigo_prestador
      * @return Pessoas_Model
      */
-    public Pessoas_Model Buscar_Prestador(int codigo_prestador) {
+    public List<Pessoas_Model> ConsultarPrestador(String nome) {
 
         Pessoas_Dao dao = new Pessoas_Dao();
-        Pessoas_Model pessoa = new Pessoas_Model();
-
-        pessoa = dao.Buscar_Pessoa(codigo_prestador);
-
-        return pessoa;
+        return dao.ConsultarPrestador(nome);
     }
 
+    /**
+     * Metodo que preenche a lista com resultado da busca dos prestadores
+     * @param lista
+     * @param modelo 
+     */
+    public void PreencherTabelaConsulta(List<Pessoas_Model>lista, TableBuscarPrestadorAbstract modelo){
+        TableBuscarPrestadorAbstract model = modelo;
+        model.addLinha(lista);
+    }
+    
     /**
      * Recupera dados de um determinado prestador, e verifica se o mesmo esta
      * cadastrado ou nao na base de dados

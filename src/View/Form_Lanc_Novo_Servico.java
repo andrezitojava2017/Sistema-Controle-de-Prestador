@@ -274,6 +274,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         campoNomePrestador = new javax.swing.JTextField();
         campoPisPasepPrestador = new javax.swing.JTextField();
         campoCompetencia = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -327,6 +328,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
 
         campoPisPasepPrestador.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         campoPisPasepPrestador.setForeground(new java.awt.Color(0, 102, 102));
+        campoPisPasepPrestador.setEnabled(false);
         campoPisPasepPrestador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 campoPisPasepPrestadorKeyPressed(evt);
@@ -338,6 +340,13 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jButton1.setText("buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -351,10 +360,13 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoPisPasepPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoPisPasepPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addComponent(campoNomePrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCompetencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +382,8 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(campoPisPasepPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPisPasepPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -808,6 +821,12 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btn_salvar_alteracaoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Form_consultar_prestador buscar = new Form_consultar_prestador(null, true);
+        buscar.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -864,6 +883,7 @@ public class Form_Lanc_Novo_Servico extends javax.swing.JDialog {
     private javax.swing.JTextField campoNomePrestador;
     private javax.swing.JTextField campoPisPasepPrestador;
     private javax.swing.JTextField campoValor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

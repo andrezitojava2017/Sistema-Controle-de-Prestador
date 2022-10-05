@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -66,20 +68,22 @@ public class Pessoas_Dao {
      * @param codigo_pessoa
      * @return Pessoas_Model
      */
-    public Pessoas_Model Buscar_Pessoa(int codigo_pessoa) {
+    public List<Pessoas_Model> ConsultarPrestador(String nome) {
 
-        Pessoas_Model pessoa = new Pessoas_Model();
+        List<Pessoas_Model> lista = new ArrayList<>();
 
         try {
-            String sql = "select * from prefeitura.tb_pessoas where codigo=" + codigo_pessoa;
+            String sql = "select * from prefeitura.tb_pessoas where nome like '" + nome +"%'";
 
             con = Conexao.ConexaoDB.getconection();
             stm = con.prepareCall(sql);
             rs = stm.executeQuery();
 
             while (rs.next()) {
+                Pessoas_Model pessoa = new Pessoas_Model();
                 pessoa.setNome_pessoa(rs.getString("nome"));
                 pessoa.setPisPasep(rs.getString("pis_pasep"));
+                lista.add(pessoa);
             }
 
         } catch (Exception e) {
@@ -89,7 +93,7 @@ public class Pessoas_Dao {
             Conexao.ConexaoDB.fecharConexao(con, stm);
         }
 
-        return pessoa;
+        return lista;
     }
 
     /**

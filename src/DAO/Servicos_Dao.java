@@ -193,7 +193,7 @@ public class Servicos_Dao {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao tentar conectar a base de dados!\n" + e);
+            JOptionPane.showMessageDialog(null, "Error\n" + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
         } finally{
             Conexao.ConexaoDB.fecharConexao(con, stm, rs);
         }
